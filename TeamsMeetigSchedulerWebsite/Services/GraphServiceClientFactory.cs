@@ -32,7 +32,7 @@ namespace MicrosoftTeamsSchedulerWebsite.Services
                     requestMessage.Headers.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
 
                     // This header identifies the sample in the Microsoft Graph service. If extracting this code for your project please remove.
-                    requestMessage.Headers.Add("SampleID", "aspnetcore-connect-sample");
+                    requestMessage.Headers.Add("SampleID", "MicrosoftTeamsSchedulerWebsite");
                 }));
     }
 

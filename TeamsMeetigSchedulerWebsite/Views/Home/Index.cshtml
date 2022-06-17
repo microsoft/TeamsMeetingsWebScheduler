@@ -52,20 +52,30 @@
         <div class="form-group">
              <div class="col-md-9">
                 <label for="title">Meeting title</label>
-                <input type="text" name="title" style="width: 300px;" />
+                <input required="required" type="text" name="title" style="width: 300px;" />
              </div><br />
+            <div class="col-md-9">
+                <input type="text" name="myselfemail" hidden value="@ViewData["Email"]" style="width: 300px;" />
+            </div><br />
              <div class="col-md-9">
                 <label for="recipients">Recipient email addresses, separated by a semicolon</label>
-                <input type="text" name="recipients" value="@ViewData["Email"]" style="width: 300px;" />
+                <input required="required" type="text" name="recipients" style="width: 300px;" />
              </div><br />
              <div class="col-md-9">
                 <label for="date">Select date for your meeting</label>
-                <input type="datetime-local" name="date"  />
+                <input required="required" type="datetime-local" name="date" />
             </div><br />
 
             <div class="col-md-9">
                 <label for="duration">Select duration in hour for your meeting</label>
-                <input type="text" name="duration"  />
+                <select name="duration">
+                    <option value="240">4 hours</option>
+                    <option value="180">3 hours</option>
+                    <option value="120">2 hours</option>
+                    <option selected value="60">1 hour</option>
+                    <option value="30">30 minutes</option>
+                </select>
+                
             </div><br /><br />
             <button type="submit">Create meeting</button>
         </div>

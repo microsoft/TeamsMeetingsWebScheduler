@@ -21,5 +21,7 @@
         public string GraphResourceId { get; set; }
 
         public string GraphScopes { get; set; }
+        public string VanityDomain { get; set; }
+        public string MainDomain { get; set; }
     }
 }

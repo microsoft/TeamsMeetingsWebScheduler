@@ -64,7 +64,7 @@ namespace MicrosoftTeamsSchedulerWebsite.Controllers
             {
                 // Get users's email.
                 email ??= User.FindFirst("preferred_username")?.Value;
-                ViewData["Email"] = email;
+                ViewData["Email"] = email.Replace("@teams.", "@");
 
                 
 
@@ -111,8 +111,7 @@ namespace MicrosoftTeamsSchedulerWebsite.Controllers
 
         [Authorize]
         [HttpPost]
-        // Send an email message from the current user.
-        public async Task<IActionResult> CreateMeeting(string recipients, DateTime date, string duration, string title)
+        public async Task<IActionResult> CreateMeeting(string recipients, DateTime date, string duration, string title, string myselfemail)
         {
             if (string.IsNullOrEmpty(recipients))
             {
@@ -126,7 +125,7 @@ namespace MicrosoftTeamsSchedulerWebsite.Controllers
                 var graphClient = _graphServiceClientFactory.GetAuthenticatedGraphClient((ClaimsIdentity)User.Identity);
 
                 // Send the email.
-                await GraphService.CreateMeeting(graphClient, _env, recipients, date, duration, HttpContext, title);
+                await GraphService.CreateMeeting(graphClient, _env, recipients, date, duration, HttpContext, title, myselfemail);
 
                 // Reset the current user's email address and the status to display when the page reloads.
                 TempData["Message"] = "Success! Meeting created.";

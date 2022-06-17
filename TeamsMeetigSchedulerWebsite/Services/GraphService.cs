@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Graph;
+using MicrosoftTeamsSchedulerWebsite.Extensions;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -254,7 +255,7 @@ namespace MicrosoftTeamsSchedulerWebsite.Services
 
 
 
-        public static async Task CreateMeeting(GraphServiceClient graphClient, IWebHostEnvironment hostingEnvironment, string recipients, DateTime date, string duration, HttpContext httpContext, string title)
+        public static async Task CreateMeeting(GraphServiceClient graphClient, IWebHostEnvironment hostingEnvironment, string recipients, DateTime date, string duration, HttpContext httpContext, string title, string myselfemail)
         {
             if (recipients == null) return;
 
@@ -262,16 +263,27 @@ namespace MicrosoftTeamsSchedulerWebsite.Services
             var endTime = date.AddMinutes(Double.Parse(duration)).ToString("yyyy-MM-ddTHH:mm:ss.fffffffK");
 
             Event ScheduledMeeting = new Event();
-
+            
             var splitRecipientsString = recipients.Split(new[] { ";" }, StringSplitOptions.RemoveEmptyEntries);
             var recipientList = splitRecipientsString.Select(recipient => new Attendee
             {
                 EmailAddress = new EmailAddress
                 {
-                    Address = recipient.Trim().Replace("teams.apnea.tk","apnea.tk")
+                    Address = recipient.Trim()
                 },
                 Type = AttendeeType.Required
             }).ToList();
+
+            var myselfemail_temp = new Attendee
+            {
+                EmailAddress = new EmailAddress
+                {
+                    Address = myselfemail.Trim()
+                },
+                Type = AttendeeType.Required
+            };
+
+            recipientList.Add(myselfemail_temp);
 
             ScheduledMeeting = new Event
             {
