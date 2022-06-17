@@ -3,3 +3,14 @@
 ################################################################################
 
 /TeamsMeetigSchedulerWebsite/bin/Debug/netcoreapp3.1/appsettings.development.json
+/TeamsMeetigSchedulerWebsite/obj/Development/netcoreapp3.1/PubTmp
+/TeamsMeetigSchedulerWebsite/obj/Release/netcoreapp3.1
+/TeamsMeetigSchedulerWebsite/Properties/PublishProfiles
+/TeamsMeetigSchedulerWebsite/obj/Debug/netcoreapp3.1/staticwebassets
+/TeamsMeetigSchedulerWebsite/bin
+/.vs
+/TeamsMeetigSchedulerWebsite/obj
+/TeamsMeetigSchedulerWebsite/Properties
+/TeamsMeetigSchedulerWebsite/appsettings.development.json
+/TeamsMeetigSchedulerWebsite/appsettings.json
+/TeamsMeetigSchedulerWebsite/TeamsMeetigSchedulerWebsite.csproj.user

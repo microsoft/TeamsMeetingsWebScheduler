@@ -1,0 +1,73 @@
+﻿<!--  Copyright (c) Microsoft. All rights reserved. Licensed under the MIT license.
+        See LICENSE in the source repository root for complete license information. -->
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+
+
+<h2>Microsoft Teams Meeting Scheduler Website</h2>
+
+
+@if (!User.Identity.IsAuthenticated)
+{
+    <br />
+    <p>Using this service you will be able to schedule Teams Meetings logging with your Microsoft 365 identity. <br />This is useful when, for example, you are using maill system on-premises other than Exchange. The service will leaverage on a Microsoft 365 mailbox.</p>
+
+    <br /><br />
+    <p>Choose <b>Sign in</b> at the top of the page and sign in with your work or school account.</p>
+}
+@if (User.Identity.IsAuthenticated)
+{
+    <div class="alert alert-info @(TempData["Message"] == null ? "hidden" : null)" role="alert">
+        @Html.Raw(TempData["Message"])
+    </div>
+    <br />
+   <!-- 
+    <br />
+    <h4>Get started</h4>
+    <p>Change the email address in the box below to another valid account's email in the same tenant and click <b>Load data</b>!</p>
+    <form asp-controller="Home" asp-action="Index" method="get">
+        <input type="email" name="email" value="@ViewData["Email"]" style="width: 300px;" />
+        <button type="submit">Load data</button>
+    </form>
+    <br />
+
+    -->
+
+    <div class="row">
+        <div class="col-md-3">
+            <img src="@ViewData["Picture"]" style="border-radius: 50%; height: 200px; width: 200px; margin: 20px;" />
+        </div>
+        <div class="col-md-9">
+            <pre>@ViewData["Response"]</pre>
+        </div>
+    </div>
+
+    <br />
+    <h4>Create a new Teams Meeting, this will generate a new Teams meeting in the cloud and will be sent to your legacy mailbox</h4>
+    <form asp-controller="Home" asp-action="CreateMeeting" method="post">
+
+        <div class="form-group">
+             <div class="col-md-9">
+                <label for="title">Meeting title</label>
+                <input type="text" name="title" style="width: 300px;" />
+             </div><br />
+             <div class="col-md-9">
+                <label for="recipients">Recipient email addresses, separated by a semicolon</label>
+                <input type="text" name="recipients" value="@ViewData["Email"]" style="width: 300px;" />
+             </div><br />
+             <div class="col-md-9">
+                <label for="date">Select date for your meeting</label>
+                <input type="datetime-local" name="date"  />
+            </div><br />
+
+            <div class="col-md-9">
+                <label for="duration">Select duration in hour for your meeting</label>
+                <input type="text" name="duration"  />
+            </div><br /><br />
+            <button type="submit">Create meeting</button>
+        </div>
+    </form>
+}
