@@ -6,6 +6,31 @@ This could be very useful when your mail system is different from Exchange / Exc
 
 
 
+## Register the required application for Graph API usage
+1. Open a browser and navigate to the Azure Active Directory admin center. Login using a personal account (aka: Microsoft Account) or Work or School Account.
+
+2. Select Azure Active Directory in the left-hand navigation, then select App registrations under Manage.
+
+3. Select New registration. On the Register an application page, set the values as follows.
+- Set Name to name of your app.
+- Set Supported account types to Accounts in any organizational directory and personal Microsoft accounts.
+- Under Redirect URI, set the first drop-down to Web and set the value to https://localhost:5001/.
+
+4. Select Register. On the web page, copy the value of the Application (client) ID and save it, you will need it in the next step.
+
+5. Select Authentication under Manage. Under Redirect URIs add a URI with the value https://<your application URL>/signin-oidc.
+
+6. Set the Logout URL to https://<your application URL>/signout-oidc.
+
+7. Locate the Implicit grant section and enable ID tokens. Select Save.
+
+8. Select Certificates & secrets under Manage. Select the New client secret button. Enter a value in Description and select one of the options for Expires and select Add.
+
+9. Copy the client secret value before you leave this page. You will need it in the next step.
+
+> IMPORTANT: This client secret is never shown again, so make sure you copy it now.
+
+
 
 ## Contributing
 
