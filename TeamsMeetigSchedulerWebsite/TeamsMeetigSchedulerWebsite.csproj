@@ -9,6 +9,7 @@
   </PropertyGroup>
   
   <ItemGroup>
+    <PackageReference Include="Bower" Version="1.3.11" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.OpenIdConnect" Version="3.1.25" />
     <PackageReference Include="Microsoft.Graph" Version="4.33.0" />
     <PackageReference Include="Microsoft.Identity.Client" Version="4.45.0" />
