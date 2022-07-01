@@ -5,10 +5,6 @@
 
 version: 2
 updates:
-  - package-ecosystem: "bower" 
-    directory: "/" # Location of package manifests
-    schedule:
-      interval: "daily"
   - package-ecosystem: "nuget" 
     directory: "/" # Location of package manifests
     schedule:
