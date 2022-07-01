@@ -51,9 +51,10 @@ namespace MicrosoftTeamsSchedulerWebsite.Services
 
             try
             {
+                
                 var result = await _app.AcquireTokenSilent(_scopes, account).ExecuteAsync();
                 // var result = await _app.AcquireTokenForClient(_scopes).ExecuteAsync();
-
+                
                 return result.AccessToken;
             }
 
