@@ -5,31 +5,41 @@ This could be very useful when your mail system is different from Exchange / Exc
 
 
 
+## Setup & Prerequisites
+Using the steps below you will be able to create all prerequisites and resources required by the solution.
 
-## Register the required application for Graph API usage
-1. Open a browser and navigate to the Azure Active Directory admin center. Login using a personal account (aka: Microsoft Account) or Work or School Account.
 
-2. Select Azure Active Directory in the left-hand navigation, then select App registrations under Manage.
+### Register the required application for Graph API usage
+	1. Open a browser and navigate to the Azure Active Directory admin center. Login using a personal account (aka: Microsoft Account) or Work or School Account.
 
-3. Select New registration. On the Register an application page, set the values as follows.
-- Set Name to name of your app.
-- Set Supported account types to Accounts in any organizational directory and personal Microsoft accounts.
-- Under Redirect URI, set the first drop-down to Web and set the value to https://localhost:5001/.
+	2. Select Azure Active Directory in the left-hand navigation, then select App registrations under Manage.
 
-4. Select Register. On the web page, copy the value of the Application (client) ID and save it, you will need it in the next step.
+	3. Select New registration. On the Register an application page, set the values as follows.
+	- Set Name to name of your app.
+	- Set Supported account types to Accounts in any organizational directory and personal Microsoft accounts.
+	- Under Redirect URI, set the first drop-down to Web and set the value to https://localhost:5001/.
 
-5. Select Authentication under Manage. Under Redirect URIs add a URI with the value https://<your application URL>/signin-oidc.
+	4. Select Register. On the web page, copy the value of the Application (client) ID and save it, you will need it in the next step.
 
-6. Set the Logout URL to https://<your application URL>/signout-oidc.
+	5. Select Authentication under Manage. Under Redirect URIs add a URI with the value https://your_application_URL.TLD/signin-oidc.
 
-7. Locate the Implicit grant section and enable ID tokens. Select Save.
+	6. Set the Logout URL to https://your_application_URL.TLD/signout-oidc.
 
-8. Select Certificates & secrets under Manage. Select the New client secret button. Enter a value in Description and select one of the options for Expires and select Add.
+	7. Locate the Implicit grant section and enable ID tokens. Select Save.
 
-9. Copy the client secret value before you leave this page. You will need it in the next step.
+	8. Select Certificates & secrets under Manage. Select the New client secret button. Enter a value in Description and select one of the options for Expires and select Add.
 
-> IMPORTANT: This client secret is never shown again, so make sure you copy it now.
+	9. Copy the client secret value before you leave this page. You will need it in the next step.
 
+	> IMPORTANT: This client secret is never shown again, so make sure you copy it now.
+
+
+
+### Authorize app access to Azure Active Directory
+
+	1. From the created app, select from left menu of the app created API Authorization.
+	2. Add Graph Authorization: OnlineMeetings.ReadWrite and Calendars.ReadWrite
+	3. Provide Admin consent for the authorizations
 
 
 ## Contributing
