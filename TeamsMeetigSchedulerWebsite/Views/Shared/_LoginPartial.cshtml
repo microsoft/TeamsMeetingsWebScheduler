@@ -5,14 +5,14 @@
 {
     var username = User.Identity.Name ?? User.FindFirst("preferred_username").Value;
 
-    <ul class="nav navbar-nav navbar-right">
+    <ul class="nav navbar-nav nav-item navbar-right">
         <li class="navbar-text">@username</li>
         <li><a asp-area="" asp-controller="Account" asp-action="SignOut">Sign Out</a></li>
     </ul>
 }
 else
 {
-    <ul class="nav navbar-nav navbar-right">
+    <ul class="nav navbar-nav nav-item navbar-right">
         <li><a asp-area="" asp-controller="Account" asp-action="Signin">Sign in</a></li>
     </ul>
 }
